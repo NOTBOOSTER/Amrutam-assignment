@@ -159,8 +159,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <NavLink
-          to="/affiliate/dashboard"
+        <div
           className={`flex items-center justify-between px-3 py-2.5  hover:bg-gray-50  rounded-md cursor-pointer group ${
             expandedSections.affiliate ? "text-[#28643B]" : "text-[#333548BF]"
           }`}
@@ -197,7 +196,7 @@ const Sidebar = () => {
               />
             )}
           </div>
-        </NavLink>
+        </div>
 
         {expandedSections.affiliate && (
           <div className="rounded-md mx-3 mb-1">

@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import React from "react";
 import AffiliateDashboard from "./pages/affiliate/dashboard";
+import Commission from "./pages/affiliate/commission";
 
 const Routing = () => {
   return (
@@ -10,6 +11,7 @@ const Routing = () => {
       <Route path="/about" element={<div>About</div>} />
       <Route path="/affiliate">
         <Route path="dashboard" element={<AffiliateDashboard />} />
+        <Route path="commission" element={<Commission />} />
       </Route>
     </Routes>
   );

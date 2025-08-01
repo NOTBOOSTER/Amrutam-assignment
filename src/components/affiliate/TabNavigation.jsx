@@ -8,7 +8,7 @@ const TabNavigation = () => {
         onClick={() => setActiveTab("Today So Far")}
         className={`cursor-pointer ${
           activeTab === "Today So Far"
-            ? "text-[#28643B] underline underline-offset-8"
+            ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : ""
         }`}
       >
@@ -18,7 +18,7 @@ const TabNavigation = () => {
         onClick={() => setActiveTab("Week So Far")}
         className={`cursor-pointer ${
           activeTab === "Week So Far"
-            ? "text-[#28643B] underline underline-offset-8"
+            ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : ""
         }`}
       >
@@ -28,7 +28,7 @@ const TabNavigation = () => {
         onClick={() => setActiveTab("Month So Far")}
         className={`cursor-pointer ${
           activeTab === "Month So Far"
-            ? "text-[#28643B] underline underline-offset-8"
+            ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : ""
         }`}
       >
@@ -38,7 +38,7 @@ const TabNavigation = () => {
         onClick={() => setActiveTab("Custom")}
         className={`cursor-pointer ${
           activeTab === "Custom"
-            ? "text-[#28643B] underline underline-offset-8"
+            ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : ""
         }`}
       >
