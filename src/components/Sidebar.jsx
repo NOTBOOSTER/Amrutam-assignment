@@ -201,46 +201,42 @@ const Sidebar = () => {
         {expandedSections.affiliate && (
           <div className="rounded-md mx-3 mb-1">
             <div className="py-1 space-y-0">
-              <div className="px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6">
-                <NavLink
-                  to="/affiliate/dashboard"
-                  className={
+              <NavLink to="/affiliate/dashboard">
+                <div
+                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
                     currentPath.includes("affiliate/dashboard")
                       ? "text-[#28643B]"
-                      : "text-[#333548BF]"
-                  }
+                      : "text-[#333548BF] "
+                  }`}
                 >
                   Dashboard
-                </NavLink>
-              </div>
-              <div className="px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6">
-                <NavLink
-                  to="/affiliate/commission"
-                  className={
+                </div>
+              </NavLink>
+              <NavLink to="/affiliate/commission" className="">
+                <div
+                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
                     currentPath.includes("affiliate/commission")
                       ? "text-[#28643B]"
                       : "text-[#333548BF]"
-                }
+                  }`}
                 >
                   Commission
-                </NavLink>
-              </div>
-              <div className="px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6">
-                <NavLink
-                  to="/affiliate/coupons"
-                  className={
+                </div>
+              </NavLink>
+              <NavLink to="/affiliate/coupons">
+                <div
+                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
                     currentPath.includes("affiliate/coupons")
                       ? "text-[#28643B]"
                       : "text-[#333548BF]"
-                  }
+                  }`}
                 >
                   Coupons
-                </NavLink>
-              </div>
+                </div>
+              </NavLink>
 
               <div className="space-y-0">
-                <NavLink
-                  to="/affiliate/payment/pending-payment"
+                <di
                   className={`flex items-center pl-5 gap-3 px-4 py-1 text-sm ${
                     currentPath.includes("affiliate/payment")
                       ? "text-[#28643B]"
@@ -262,36 +258,36 @@ const Sidebar = () => {
                     />
                   )}
                   <span>Payment</span>
-                </NavLink>
+                </di>
 
                 {expandedSections.payment && (
                   <div className="ml-6 space-y-0">
-                    <div className="py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm">
-                    <NavLink to="/affiliate/payment/pending-payment"
-                      className={
-                        currentPath.includes(
-                          "affiliate/payment/pending-payment"
-                        )
-                          ? "text-[#28643B]"
-                          : "text-[#333548BF]"
-                      }
-                    >
-                      Pending Payment
+                    <NavLink to="/affiliate/payment/pending-payment">
+                      <div
+                        className={`py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
+                          currentPath.includes(
+                            "affiliate/payment/pending-payment"
+                          )
+                            ? "text-[#28643B]"
+                            : "text-[#333548BF]"
+                        }`}
+                      >
+                        Pending Payment
+                      </div>
                     </NavLink>
-                    </div>
-                    <div className="py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm">
-                    <NavLink to="/affiliate/payment/pending-history"
-                      className={
-                        currentPath.includes(
-                          "affiliate/payment/pending-history"
-                        )
-                          ? "text-[#28643B]"
-                          : "text-[#333548BF]"
-                      }
-                    >
-                      Payment History
+                    <NavLink to="/affiliate/payment/payment-history">
+                      <div
+                        className={`py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
+                          currentPath.includes(
+                            "affiliate/payment/payment-history"
+                          )
+                            ? "text-[#28643B]"
+                            : "text-[#333548BF]"
+                        }`}
+                      >
+                        Payment History
+                      </div>
                     </NavLink>
-                    </div>
                   </div>
                 )}
               </div>

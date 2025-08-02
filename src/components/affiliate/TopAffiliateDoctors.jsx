@@ -26,7 +26,7 @@ const TopAffiliateDoctors = () => {
         <div className="flex p-2 items-center gap-3">
           <h3 className="text-[#333448] font-medium">1.</h3>
           <img src={image} alt="doctor" className="h-9 w-9 rounded-full" />
-          <div className="">
+          <div className="flex flex-col">
             <h3 className="text-[#333448] font-medium text-sm">Dr. John Doe</h3>
             <h3 className="text-[#33354880] font-medium text-sm">Speciality + 2 others</h3>
           </div>

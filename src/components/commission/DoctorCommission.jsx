@@ -1,20 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const DoctorCommission = () => {
+  const [isToggled, setIsToggled] = useState(true);
   return (
     <div className="flex flex-col gap-3 mt-6">
-      <h2 className="font-medium text-[#333448] text-md">
-        Default Doctor Commission
-      </h2>
-      <div className="bg-white border border-[#E2E2E2] rounded-xl w-full shadow-sm/4 px-6 py-8 flex flex-col gap-8">
+      <div className="flex justify-between my-2 items-center">
+        <h2 className="font-medium text-[#333448] text-md">
+          Default Doctor Commission
+        </h2>
+        <div
+          className={`relative inline-flex h-5 w-11 items-center rounded-full transition-colors cursor-pointer mr-5 border border-[#3A643B] ${
+            isToggled ? "bg-white" : "bg-gray-200"
+          }`}
+          onClick={() => setIsToggled(!isToggled)}
+        >
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full transition-transform border- ${
+              isToggled
+                ? "translate-x-6 bg-[#3A643B]"
+                : "translate-x-0.5 bg-gray-400"
+            }`}
+          ></span>
+        </div>
+      </div>
+      <div className="bg-white rounded-xl w-full shadow-sm/4 px-6 py-8 flex flex-col gap-8">
         <div className="flex justify-between gap-3">
           <div className="w-full relative">
-            <input
-              type="text"
+            <select
               id="doctor"
-              placeholder="Applies to all the Doctors"
               className="w-full border-2 border-[#2E37A41A] h-10 px-4 text-xs rounded-xl focus:outline-none"
-            />
+              disabled={!isToggled}
+            >
+              <option value="">Applies to all the doctors</option>
+            </select>
             <label
               htmlFor="doctor"
               className="text-xs text-[#333448]font-medium absolute -top-2 left-2.5 bg-white px-2"
@@ -27,6 +45,7 @@ const DoctorCommission = () => {
               id="Percentage"
               placeholder="Please select a Percentage"
               className="w-full border-2 border-[#2E37A41A] h-10 px-4 text-xs rounded-xl focus:outline-none"
+              disabled={!isToggled}
             >
               <option value="">Please select a Percentage</option>
               <option value="10">10%</option>
