@@ -5,109 +5,43 @@ import downloadicon from "../../assets/commission/download.svg";
 import previous from "../../assets/commission/previous-page.svg";
 import next from "../../assets/commission/next-page.svg";
 import filter from "../../assets/commission/filter.svg";
+import { useEffect, useState } from "react";
+import { apiUrl } from "../../data.js";
+import Loader from "../../components/Loader.jsx";
 
 const PaymentHistory = () => {
-  const tableData = [
-    {
-      id: 1,
-      doctorName: "Isabel Wiza",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "4,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Paid",
-      approvalDate: "1st October, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 2,
-      doctorName: "Soumya Maheswari",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "5,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Decline",
-      approvalDate: "2nd July, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 3,
-      doctorName: "Margie O'Rilley",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "4,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Decline",
-      approvalDate: "14th November, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 4,
-      doctorName: "Lucas Legros",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "4,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Decline",
-      approvalDate: "14th November, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 5,
-      doctorName: "Shanelle Ziemann",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "5,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Paid",
-      approvalDate: "15th December, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 6,
-      doctorName: "William Stephan",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "5,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Paid",
-      approvalDate: "15th December, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 7,
-      doctorName: "Smith Birkin",
-      email: "alinamath@gmail.com",
-      mobile: "+91 8805322849",
-      amountWithdrawal: "5,290",
-      requestedDate: "1 Feb 2024",
-      walletAmount: "30,000",
-      status: "Paid",
-      approvalDate: "15th December, 2023",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-  ];
+  const [tableData, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [from, setFrom] = useState(0);
+
+  const fetchPandingPayment = async (from) => {
+    try {
+      const response = await fetch(apiUrl + "/affiliate/payments/history", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ skipto: from }),
+      });
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchPandingPayment(from);
+  }, [from]);
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-lg/4 my-4">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <h2 className="text-lg font-medium text-black">
-            Payment History
-          </h2>
+          <h2 className="text-lg font-medium text-black">Payment History</h2>
           <div className="relative">
             <input
               type="text"
@@ -176,7 +110,7 @@ const PaymentHistory = () => {
           <tbody>
             {tableData.map((row, index) => (
               <tr
-                key={row.id}
+                key={row._id}
                 index={index}
                 className="border-t-2 border-gray-100"
               >
@@ -186,7 +120,7 @@ const PaymentHistory = () => {
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-3">
                     <img
-                      src={row.avatar}
+                      src={row.image}
                       alt={row.doctorName}
                       className="w-8 h-8 rounded-full object-cover"
                     />
@@ -197,13 +131,17 @@ const PaymentHistory = () => {
                   {row.email}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.mobile}
+                  +91{row.mobile}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.amountWithdrawal}
+                  {row.amount}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.requestedDate}
+                  {new Date(row.date).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
                   {row.walletAmount}
@@ -212,12 +150,20 @@ const PaymentHistory = () => {
                   <span className="text-green-600 text-sm">View All</span>
                 </td>
                 <td className="py-4 px-4 text-center">
-                  <span className={`text-sm ${row.status === 'Paid' ? 'text-green-600' : 'text-red-600'}`}>
+                  <span
+                    className={`text-sm ${
+                      row.status === "paid" ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
                     {row.status}
                   </span>
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.approvalDate}
+                  {new Date(row.date).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </td>
               </tr>
             ))}
@@ -228,15 +174,27 @@ const PaymentHistory = () => {
       <div className="flex items-center justify-between mt-6">
         <span className="text-xs text-gray-500">Rows per page: 7</span>
         <div className="flex items-center space-x-2">
-          <button className="p-1">
-            <img src={previous} className="text-gray-600" />
-          </button>
+          {from < 7 ? (
+            <button className="p-1">
+              <img src={previous} alt="Previous Icon" />
+            </button>
+          ) : (
+            <button onClick={() => setFrom(from - 7)} className="p-1">
+              <img src={previous} alt="Previous Icon" />
+            </button>
+          )}
           <span className="px-3 py-1 bg-gray-100 rounded text-sm text-black">
-            1
+            {from / 7 + 1}
           </span>
-          <button className="p-1">
-            <img src={next} className="text-gray-600" />
-          </button>
+          {tableData.length >= 7 ? (
+            <button onClick={() => setFrom(from + 7)} className="p-1">
+              <img src={next} alt="Next Icon" />
+            </button>
+          ) : (
+            <button className="p-1">
+              <img src={next} alt="Next Icon" />
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ const Breadcrumb = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const pathSegments = currentPath.split('/').filter(segment => segment !== '');
-    console.log(pathSegments);
     
   return (
     <div className="mt-5">{

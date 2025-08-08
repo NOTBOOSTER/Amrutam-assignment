@@ -5,55 +5,37 @@ import refershicon from "../../assets/commission/refresh.svg";
 import downloadicon from "../../assets/commission/download.svg";
 import previous from "../../assets/commission/previous-page.svg";
 import next from "../../assets/commission/next-page.svg";
+import { useEffect, useState } from "react";
+import { apiUrl } from "../../data.js";
+import Loader from "../Loader.jsx";
 
 const SpecialCouponsTable = () => {
-  const tableData = [
-    {
-      id: 1,
-      doctorName: "Alina Mathew",
-      usageLimit: "10",
-      productName: "Nari Sandariya Malt",
-      precentage: "30%",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 2,
-      doctorName: "Jack Rock",
-      usageLimit: "10",
-      productName: "Nari Sandariya Malt",
-      precentage: "30%",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 3,
-      doctorName: "Alina Mathew",
-      usageLimit: "10",
-      productName: "Nari Sandariya Malt",
-      precentage: "30%",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 4,
-      doctorName: "Alina Mathew",
-      usageLimit: "10",
-      productName: "Nari Sandariya Malt",
-      precentage: "30%",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c33a?w=32&h=32&fit=crop&crop=face",
-    },
-    {
-      id: 5,
-      doctorName: "Jack Rock",
-      usageLimit: "10",
-      productName: "Nari Sandariya Malt",
-      precentage: "30%",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-    },
-  ];
+  const [tableData, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [from , setFrom] = useState(0);
+
+  useEffect(() => {
+    fetchSpecialCoupons(from);
+  }, [from]);
+
+  const fetchSpecialCoupons = async (from) => {
+    try {
+      const response = await fetch(apiUrl + "/affiliate/coupons/specialcoupons", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ skipto: from }),
+      });
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-lg/4 my-4">
@@ -108,14 +90,14 @@ const SpecialCouponsTable = () => {
           <tbody>
             {tableData.map((row, index) => (
               <tr
-                key={row.id}
+                key={index}
                 index={index}
                 className="border-b border-gray-100"
               >
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-3">
                     <img
-                      src={row.avatar}
+                      src={row.doctorImage}
                       alt={row.doctorName}
                       className="w-8 h-8 rounded-full object-cover"
                     />
@@ -126,10 +108,10 @@ const SpecialCouponsTable = () => {
                   {row.productName}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.usageLimit}
+                  {row.limit}
                 </td>
                 <td className="py-4 px-4 text-sm text-black text-center">
-                  {row.precentage}
+                  {row.percentage}
                 </td>
                 <td className="py-4 px-4 text-center">
                   <button>
@@ -143,19 +125,31 @@ const SpecialCouponsTable = () => {
       </div>
 
       <div className="flex items-center justify-between mt-6">
-        <span className="text-xs text-gray-500">Rows per page: 5</span>
-        <div className="flex items-center space-x-2">
-          <button className="p-1">
-            <img src={previous} className="text-gray-600" />
-          </button>
-          <span className="px-3 py-1 bg-gray-100 rounded text-sm text-black">
-            1
-          </span>
-          <button className="p-1">
-            <img src={next} className="text-gray-600" />
-          </button>
-        </div>
-      </div>
+              <span className="text-xs text-gray-500">Rows per page: 5</span>
+              <div className="flex items-center space-x-2">
+                {from < 5  ? (
+                  <button className="p-1 ">
+                  <img src={previous} alt="Previous Icon" />
+                </button>
+                ) : (
+                  <button onClick={() => setFrom(from - 5)} className="p-1">
+                  <img src={previous} alt="Previous Icon" />
+                </button>
+                )}
+                <span className="px-3 py-1 bg-gray-100 rounded text-sm text-black">
+                  {from / 5 + 1}
+                </span>
+                {tableData.length >= 5 ? (
+                  <button onClick={() => setFrom(from + 5)} className="p-1">
+                  <img src={next} alt="Next Icon" />
+                </button>
+                ) : (
+                  <button className="p-1">
+                  <img src={next} alt="Next Icon" />
+                </button>
+                )}
+              </div>
+            </div>
     </div>
   );
 };

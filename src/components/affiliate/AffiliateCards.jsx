@@ -3,7 +3,7 @@ import ordersicon from "../../assets/affiliate/orders.svg";
 import walleticon from "../../assets/affiliate/empty-wallet.svg";
 import profileicon from "../../assets/affiliate/profile.svg";
 
-const AffiliateCards = () => {
+const AffiliateCards = ({data, activeTab}) => {
   return (
     <div className="flex m-2 gap-3 my-5">
       <div className="h-auto bg-white border border-[#E2E2E2] rounded-xl w-full shadow-sm/4 flex-col flex p-6 justify-between  gap-2">
@@ -13,9 +13,11 @@ const AffiliateCards = () => {
             <img src={calendericon} alt="coupons clicks" />
           </div>
           <div className="flex items-center ">
-            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">255</h1>
+            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">{data.totalCouponsClicks}</h1>
             <div className="flex flex-col h-full justify-end items-end pb-5">
-              <span className="text-[#7D7D7D] text-sm">/month</span>
+              <span className="text-[#7D7D7D] text-sm">
+                {activeTab === "today" ? "/day" : (activeTab === "week" ? "/week" : "/month")}
+                </span>
             </div>
           </div>
         </div>
@@ -27,9 +29,9 @@ const AffiliateCards = () => {
             <img src={ordersicon} alt="coupons clicks" />
           </div>
           <div className="flex items-center ">
-            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">255</h1>
+            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">{data.totalOrders}</h1>
             <div className="flex flex-col h-full justify-end items-end pb-5">
-              <span className="text-[#7D7D7D] text-sm">/month</span>
+              <span className="text-[#7D7D7D] text-sm">{activeTab === "today" ? "/day" : (activeTab === "week" ? "/week" : "/month")}</span>
             </div>
           </div>
         </div>
@@ -41,9 +43,9 @@ const AffiliateCards = () => {
             <img src={walleticon} alt="coupons clicks" />
           </div>
           <div className="flex items-center ">
-            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">255</h1>
+            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">{data.totalRevenue}</h1>
             <div className="flex flex-col h-full justify-end items-end pb-5">
-              <span className="text-[#7D7D7D] text-sm">/month</span>
+              <span className="text-[#7D7D7D] text-sm">{activeTab === "today" ? "/day" : (activeTab === "week" ? "/week" : "/month")}</span>
             </div>
           </div>
         </div>
@@ -55,9 +57,9 @@ const AffiliateCards = () => {
             <img src={profileicon} alt="coupons clicks" />
           </div>
           <div className="flex items-center ">
-            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">255</h1>
+            <h1 className="px-2 text-[#3A643B] font-semibold text-4xl">{data.averageDoctors}</h1>
             <div className="flex flex-col h-full justify-end items-end pb-5">
-              <span className="text-[#7D7D7D] text-sm">/month</span>
+              <span className="text-[#7D7D7D] text-sm">{activeTab === "today" ? "/day" : (activeTab === "week" ? "/week" : "/month")}</span>
             </div>
           </div>
         </div>

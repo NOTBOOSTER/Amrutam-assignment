@@ -7,6 +7,7 @@ import AffiliateCoupons from "./pages/affiliate/Coupons";
 import SpecialCoupons from "./pages/affiliate/SpecialCoupons";
 import PendingPayment from "./pages/affiliate/PendingPayment";
 import PaymentHistory from "./pages/affiliate/PaymentHistory";
+import Customization from "./pages/affiliate/Customization";
 
 const Routing = () => {
   return (
@@ -36,6 +37,10 @@ const Routing = () => {
             />
           </Route>
         </Route>
+      </Route>
+      <Route path="/customization">
+      <Route path="app" element={<Customization />} />
+      <Route index element={<Navigate to="/customization/app" />} />
       </Route>
     </Routes>
   );

@@ -6,13 +6,19 @@ import Breadcrumb from "./components/Breadcrumb";
 
 const App = () => {
   return (
-    <div className="">
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <div className="flex gap-7 w-full">
-        <Sidebar />
-        <div className="flex flex-col w-full">
-          <Breadcrumb />
-        <Routing>App</Routing>
+      <div className="flex flex-1 gap-7 w-full overflow-hidden">
+        <div className="flex-shrink-0 overflow-y-auto">
+          <Sidebar />
+        </div>
+        <div className="flex flex-col w-full overflow-hidden">
+          <div className="flex-shrink-0">
+            <Breadcrumb />
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <Routing />
+          </div>
         </div>
       </div>
     </div>

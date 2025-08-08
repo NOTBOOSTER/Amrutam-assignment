@@ -1,48 +1,48 @@
-
-const TabNavigation = ({ changeTab, activeTab }) => {
+const CustomizationNavigation = ({ changeTab, activeTab }) => {
   return (
-    <div className="h-16 m-2 rounded-2xl overflow-hidden bg-white w-auto shadow-sm/2 flex justify-evenly items-center text-gray-500 font-medium">
+    <div className="h-16 m-2 rounded-2xl overflow-hidden bg-white w-auto shadow-sm flex justify-start gap-8 px-6 items-center text-gray-500 font-medium">
       <div
-        onClick={() => changeTab("today")}
+        onClick={() => changeTab("banners")}
         className={`cursor-pointer ${
-          activeTab === "today"
+          activeTab === "banners"
             ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : "text-[#9999A3]"
         }`}
       >
-        Today So Far
+        Banners
       </div>
       <div
-        onClick={() => changeTab("week")}
+        onClick={() => changeTab("products")}
         className={`cursor-pointer ${
-          activeTab === "week"
+          activeTab === "products"
             ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : "text-[#9999A3]"
         }`}
       >
-        Week So Far
+        Per Page Products
       </div>
       <div
-        onClick={() => changeTab("month")}
+        onClick={() => changeTab("ingredients")}
         className={`cursor-pointer ${
-          activeTab === "month"
+          activeTab === "ingredients"
             ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : "text-[#9999A3]"
         }`}
       >
-        Month So Far
+        Ingredients
       </div>
       <div
+        onClick={() => changeTab("faq")}
         className={`cursor-pointer ${
-          activeTab === "custom"
+          activeTab === "faq"
             ? "text-[#28643B] underline underline-offset-8 decoration-2"
             : "text-[#9999A3]"
         }`}
       >
-        Custom
+        FAQ
       </div>
     </div>
   );
 };
 
-export default TabNavigation;
+export default CustomizationNavigation;

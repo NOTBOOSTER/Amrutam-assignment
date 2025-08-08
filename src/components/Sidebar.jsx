@@ -15,11 +15,11 @@ const Sidebar = () => {
   const [expandedSections, setExpandedSections] = useState({
     affiliate: true,
     payment: false,
+    customization: false,
   });
 
   const location = useLocation();
   const currentPath = location.pathname;
-  console.log("Current Path:", currentPath.split("/")[1]);
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -28,276 +28,345 @@ const Sidebar = () => {
     }));
   };
   return (
-    <div className="h-auto w-60 bg-white mt-3 rounded-e-3xl min-h-screen shadow-lg shadow-[#2E37A40D]">
-      <h2 className="pl-5 pt-3  font-medium text-sm text-[#333333]">Main</h2>
-      <nav className="space-y-1">
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconone} alt="Dashboard Icon" className="w-5 h-5" />
+    <div className="w-60 bg-white mt-3 rounded-e-3xl shadow-lg shadow-[#2E37A40D] h-full flex flex-col">
+      <div className="flex-shrink-0 pl-5 pt-3 pb-2">
+        <h2 className="font-medium text-sm text-[#333333]">Main</h2>
+      </div>
+      <div className="flex-1 overflow-y-auto px-3">
+        <nav className="space-y-1 pb-4">
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconone} alt="Dashboard Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Dashboard</span>
             </div>
-            <span className="text-sm font-normal">Dashboard</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={icontwo} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Doctors</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconthree} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Patients</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconfour} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Appointments</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconfive} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Speciality</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconsix} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Coupons</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconseven} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Concerns</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50  rounded-md cursor-pointer group">
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
-              <img src={iconeight} alt="Dashboard Icon" className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-normal">Referral</span>
-          </div>
-          <div className="w-2 h-2">
-            <img
-              src={submenuopen}
-              alt="submenu open icon"
-              className="w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div
-          className={`flex items-center justify-between px-3 py-2.5  hover:bg-gray-50  rounded-md cursor-pointer group ${
-            expandedSections.affiliate ? "text-[#28643B]" : "text-[#333548BF]"
-          }`}
-          onClick={() => toggleSection("affiliate")}
-        >
-          <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+            <div className="w-2 h-2">
               <img
-                src={iconeight}
-                alt="Dashboard Icon"
-                className="w-5 h-5"
-                style={{
-                  filter:
-                    expandedSections.affiliate === true
-                      ? "invert(24%) sepia(29%) saturate(1753%) hue-rotate(88deg) brightness(95%) contrast(89%)"
-                      : "invert(50%)",
-                }}
-              />
-            </div>
-            <span className="text-sm font-normal">Affiliate</span>
-          </div>
-          <div className="w-2 h-2">
-            {expandedSections.affiliate ? (
-              <img
-                src={submenuclose}
+                src={submenuopen}
                 alt="submenu open icon"
                 className="w-full h-full"
               />
-            ) : (
-              <img
-                src={submenuopen}
-                alt="submenu closed icon"
-                className="w-full h-full"
-              />
-            )}
-          </div>
-        </div>
-
-        {expandedSections.affiliate && (
-          <div className="rounded-md mx-3 mb-1">
-            <div className="py-1 space-y-0">
-              <NavLink to="/affiliate/dashboard">
-                <div
-                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
-                    currentPath.includes("affiliate/dashboard")
-                      ? "text-[#28643B]"
-                      : "text-[#333548BF] "
-                  }`}
-                >
-                  Dashboard
-                </div>
-              </NavLink>
-              <NavLink to="/affiliate/commission" className="">
-                <div
-                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
-                    currentPath.includes("affiliate/commission")
-                      ? "text-[#28643B]"
-                      : "text-[#333548BF]"
-                  }`}
-                >
-                  Commission
-                </div>
-              </NavLink>
-              <NavLink to="/affiliate/coupons">
-                <div
-                  className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
-                    currentPath.includes("affiliate/coupons")
-                      ? "text-[#28643B]"
-                      : "text-[#333548BF]"
-                  }`}
-                >
-                  Coupons
-                </div>
-              </NavLink>
-
-              <div className="space-y-0">
-                <di
-                  className={`flex items-center pl-5 gap-3 px-4 py-1 text-sm ${
-                    currentPath.includes("affiliate/payment")
-                      ? "text-[#28643B]"
-                      : "text-[#333548BF]"
-                  } hover:bg-gray-50 cursor-pointer rounded`}
-                  onClick={() => toggleSection("payment")}
-                >
-                  {expandedSections.payment ? (
-                    <img
-                      src={submenuclose}
-                      alt="submenu open icon"
-                      className="w-2 h-2"
-                    />
-                  ) : (
-                    <img
-                      src={submenuopen}
-                      alt="submenu closed icon"
-                      className="w-2 h-2"
-                    />
-                  )}
-                  <span>Payment</span>
-                </di>
-
-                {expandedSections.payment && (
-                  <div className="ml-6 space-y-0">
-                    <NavLink to="/affiliate/payment/pending-payment">
-                      <div
-                        className={`py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
-                          currentPath.includes(
-                            "affiliate/payment/pending-payment"
-                          )
-                            ? "text-[#28643B]"
-                            : "text-[#333548BF]"
-                        }`}
-                      >
-                        Pending Payment
-                      </div>
-                    </NavLink>
-                    <NavLink to="/affiliate/payment/payment-history">
-                      <div
-                        className={`py-1 text-sm  hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
-                          currentPath.includes(
-                            "affiliate/payment/payment-history"
-                          )
-                            ? "text-[#28643B]"
-                            : "text-[#333548BF]"
-                        }`}
-                      >
-                        Payment History
-                      </div>
-                    </NavLink>
-                  </div>
-                )}
-              </div>
-              <div className="px-4 py-2 text-sm text-[#333548BF] hover:bg-gray-50 cursor-pointer rounded ml-6">
-                Doctors
-              </div>
             </div>
           </div>
-        )}
-      </nav>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={icontwo} alt="Doctors Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Doctors</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconthree} alt="Patients Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Patients</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconfour} alt="Appointments Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Appointments</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconfive} alt="Speciality Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Speciality</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconsix} alt="Coupons Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Coupons</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconseven} alt="Concerns Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Concerns</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between px-3 py-2.5 text-[#333548BF] hover:bg-gray-50 rounded-md cursor-pointer group">
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img src={iconeight} alt="Referral Icon" className="w-5 h-5" />
+              </div>
+              <span className="text-sm font-normal">Referral</span>
+            </div>
+            <div className="w-2 h-2">
+              <img
+                src={submenuopen}
+                alt="submenu open icon"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div
+            className={`flex items-center justify-between px-3 py-2.5 hover:bg-gray-50 rounded-md cursor-pointer group ${
+              expandedSections.affiliate ? "text-[#28643B]" : "text-[#333548BF]"
+            }`}
+            onClick={() => toggleSection("affiliate")}
+          >
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img
+                  src={iconeight}
+                  alt="Affiliate Icon"
+                  className="w-5 h-5"
+                  style={{
+                    filter:
+                      expandedSections.affiliate === true
+                        ? "invert(24%) sepia(29%) saturate(1753%) hue-rotate(88deg) brightness(95%) contrast(89%)"
+                        : "invert(50%)",
+                  }}
+                />
+              </div>
+              <span className="text-sm font-normal">Affiliate</span>
+            </div>
+            <div className="w-2 h-2">
+              {expandedSections.affiliate ? (
+                <img
+                  src={submenuclose}
+                  alt="submenu close icon"
+                  className="w-full h-full"
+                />
+              ) : (
+                <img
+                  src={submenuopen}
+                  alt="submenu open icon"
+                  className="w-full h-full"
+                />
+              )}
+            </div>
+          </div>
+
+          {expandedSections.affiliate && (
+            <div className="rounded-md mb-1">
+              <div className="py-1 space-y-0">
+                <NavLink to="/affiliate/dashboard">
+                  <div
+                    className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
+                      currentPath.includes("affiliate/dashboard")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    }`}
+                  >
+                    Dashboard
+                  </div>
+                </NavLink>
+                <NavLink to="/affiliate/commission">
+                  <div
+                    className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
+                      currentPath.includes("affiliate/commission")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    }`}
+                  >
+                    Commission
+                  </div>
+                </NavLink>
+                <NavLink to="/affiliate/coupons">
+                  <div
+                    className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
+                      currentPath.includes("affiliate/coupons")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    }`}
+                  >
+                    Coupons
+                  </div>
+                </NavLink>
+
+                <div className="space-y-0">
+                  <div
+                    className={`flex items-center pl-5 gap-3 px-4 py-1 text-sm ${
+                      currentPath.includes("affiliate/payment")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    } hover:bg-gray-50 cursor-pointer rounded`}
+                    onClick={() => toggleSection("payment")}
+                  >
+                    {expandedSections.payment ? (
+                      <img
+                        src={submenuclose}
+                        alt="submenu close icon"
+                        className="w-2 h-2"
+                      />
+                    ) : (
+                      <img
+                        src={submenuopen}
+                        alt="submenu open icon"
+                        className="w-2 h-2"
+                      />
+                    )}
+                    <span>Payment</span>
+                  </div>
+
+                  {expandedSections.payment && (
+                    <div className="ml-6 space-y-0">
+                      <NavLink to="/affiliate/payment/pending-payment">
+                        <div
+                          className={`py-1 text-sm hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
+                            currentPath.includes("affiliate/payment/pending-payment")
+                              ? "text-[#28643B]"
+                              : "text-[#333548BF]"
+                          }`}
+                        >
+                          Pending Payment
+                        </div>
+                      </NavLink>
+                      <NavLink to="/affiliate/payment/payment-history">
+                        <div
+                          className={`py-1 text-sm hover:bg-gray-50 cursor-pointer pl-6 rounded-sm ${
+                            currentPath.includes("affiliate/payment/payment-history")
+                              ? "text-[#28643B]"
+                              : "text-[#333548BF]"
+                          }`}
+                        >
+                          Payment History
+                        </div>
+                      </NavLink>
+                    </div>
+                  )}
+                </div>
+                <div className="px-4 py-2 text-sm text-[#333548BF] hover:bg-gray-50 cursor-pointer rounded ml-6">
+                  Doctors
+                </div>
+              </div>
+            </div>
+          )}
+
+{/* Customization */}
+
+          <div
+            className={`flex items-center justify-between px-3 py-2.5 hover:bg-gray-50 rounded-md cursor-pointer group ${
+              expandedSections.customization ? "text-[#28643B]" : "text-[#333548BF]"
+            }`}
+            onClick={() => toggleSection("customization")}
+          >
+            <div className="flex items-center space-x-3">
+              <div className="w-7 h-7 text-gray-500 bg-[#3A643B0D] flex items-center justify-center rounded-md">
+                <img
+                  src={iconeight}
+                  alt="Customization Icon"
+                  className="w-5 h-5"
+                  style={{
+                    filter:
+                      expandedSections.customization === true
+                        ? "invert(24%) sepia(29%) saturate(1753%) hue-rotate(88deg) brightness(95%) contrast(89%)"
+                        : "invert(50%)",
+                  }}
+                />
+              </div>
+              <span className="text-sm font-normal">Customization</span>
+            </div>
+            <div className="w-2 h-2">
+              {expandedSections.customization ? (
+                <img
+                  src={submenuclose}
+                  alt="submenu close icon"
+                  className="w-full h-full"
+                />
+              ) : (
+                <img
+                  src={submenuopen}
+                  alt="submenu open icon"
+                  className="w-full h-full"
+                />
+              )}
+            </div>
+          </div>
+          {expandedSections.customization && (
+            <div className="rounded-md mb-1">
+              <div className="py-1 space-y-0">
+                <div >
+                  <div
+                    className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
+                      currentPath.includes("customization/web")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    }`}
+                  >
+                    Web
+                  </div>
+                </div>
+                <NavLink to="/customization/app">
+                  <div
+                    className={`px-4 py-1 text-sm hover:bg-gray-50 cursor-pointer rounded ml-6 ${
+                      currentPath.includes("customization/app")
+                        ? "text-[#28643B]"
+                        : "text-[#333548BF]"
+                    }`}
+                  >
+                    App
+                  </div>
+                </NavLink>
+              </div>
+            </div>
+          )}
+        </nav>
+      </div>
     </div>
   );
 };
