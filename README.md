@@ -1,12 +1,42 @@
-# React + Vite
+# Amrutam Pharmaceuticals - Admin Panel Assignment
+### Task 3: Affiliate & FAQ Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Hosted Frontend:** **[https://amrutam-assignment-theta.vercel.app/](https://amrutam-assignment-theta.vercel.app/)**
+- **Backend Repository:** **[https://github.com/NOTBOOSTER/Amrutam-backend](https://github.com/NOTBOOSTER/Amrutam-backend)**
 
-## Expanding the ESLint configuration
+## 📝 Project Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project is the submission for the "Task 3 - Admin (Affiliate & FAQs)" assignment. The goal was to build a full-stack admin panel based on a provided Figma design.
+
+The work involved creating a backend API using Node.js, Express, and MongoDB to handle all data operations for affiliates and FAQs. The frontend was built with React.js to interact with the API and replicate the Figma design.
+
+
+## ✨ Key Features Implemented
+
+### Affiliate Management
+- View a list of all registered affiliates.
+- Search and filter affiliates.
+- Manage affiliate status (Approve/Block).
+
+### FAQ Management
+- Full CRUD (Create, Read, Update, Delete) functionality for FAQs.
+- Interface to add, edit, and remove FAQs.
+
+## 💻 Tech Stack
+
+- **Frontend:** React.js, tailwindcss
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose
+- **Deployment:** Vercel
+
+## 🙏 Acknowledgement
+
+Thank you to Amrutam Pharmaceuticals for the assignment.
