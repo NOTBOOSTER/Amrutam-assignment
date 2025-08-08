@@ -1,3 +1,3 @@
-const apiUrl = "http://localhost:3000/api";
+const apiUrl = "https://amrutam-backend.vercel.app/api";
 
 export { apiUrl };
