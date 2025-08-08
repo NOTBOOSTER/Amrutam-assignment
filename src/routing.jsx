@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import React from "react";
 import AffiliateDashboard from "./pages/affiliate/dashboard";
-import Commission from "./pages/affiliate/commission";
+import Commission from "./pages/affiliate/Commission";
 import SpecialCommission from "./pages/affiliate/SpecialCommission";
 import AffiliateCoupons from "./pages/affiliate/Coupons";
 import SpecialCoupons from "./pages/affiliate/SpecialCoupons";
